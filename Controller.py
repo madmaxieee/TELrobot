@@ -1,32 +1,18 @@
 import pygame
 
-from Mecanum import Mecanum
-
-base = Mecanum()
+# from Mecanum import base
 
 commands = {
-    pygame.K_w: lambda _: base.cartDrive((1, 0)),
-    pygame.K_a: lambda _: base.cartDrive((0, -1)),
-    pygame.K_s: lambda _: base.cartDrive((-1, 0)),
-    pygame.K_d: lambda _: base.cartDrive((0, 1)),
+    # pygame.K_w: lambda : base.cartDrive((1, 0)),
+    # pygame.K_a: lambda : base.cartDrive((0, -1)),
+    # pygame.K_s: lambda : base.cartDrive((-1, 0)),
+    # pygame.K_d: lambda : base.cartDrive((0, 1)),
+    pygame.K_j: lambda: print('j'),
+    pygame.K_k: lambda: print('k'),
 }
 
-pygame.init()
 
-screen_res = (640, 480)
-
-screen = pygame.display.set_mode(screen_res)
-
-running = True
-
-while running:
-    pressed_keys = pygame.key.get_pressed()
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT or pressed_keys[pygame.K_ESCAPE]:
-            running = False
-
+def handleController(pressed_keys):
     for key in commands.keys():
         if pressed_keys[key]:
             commands[key]()
-
-pygame.quit()

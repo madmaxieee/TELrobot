@@ -60,6 +60,8 @@ class Mecanum:
     def cleanUp(self):
         GPIO.cleanup()
 
+# to be used in other files
+base = Mecanum()
 
 if __name__ == '__main__':
     mec = Mecanum()
