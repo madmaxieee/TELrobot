@@ -23,28 +23,36 @@ def pol2cart(coord):
 
 class Mecanum:
     def __init__(self):
+        GPIO.setmode(GPIO.BCM)
+
         self.motor_r_f = Motor(motor_pins["r_f"])
         self.motor_l_f = Motor(motor_pins["l_f"])
         self.motor_r_b = Motor(motor_pins["r_b"])
         self.motor_l_b = Motor(motor_pins["l_b"])
 
-    def cartDrive(self, velocity, spin=0):
+    def cartDrive(self, velocity=(0, 0), spin=0):
         # rf, lf, rb, lb
         speeds = np.array([0, 0, 0, 0])
         x_hat = np.array([1, 1, 1, 1])
         y_hat = np.array([1, -1, -1, 1])
         phi_hat = np.array([1, -1, 1, -1])
-        speeds = velocity[0] * x_hat + velocity[1] * y_hat + spin * phi_hat
+        speeds = velocity[0] * x_hat + velocity[1] * \
+            y_hat + spin * phi_hat + spin * phi_hat
 
         # normalize speeds
-        speeds /= np.max(np.abs(speeds))
+        max_speed = np.max(np.abs(speeds))
+        if max_speed > 1:
+            speeds = speeds / max_speed
 
         self.motor_r_f.move(speeds[0])
         self.motor_l_f.move(speeds[1])
         self.motor_r_b.move(speeds[2])
         self.motor_l_b.move(speeds[3])
 
-    def polarDrive(self, coord, spin=0):
+    def stop(self):
+        self.cartDrive((0, 0))
+
+    def polarDrive(self, coord=(0, 0), spin=0):
         self.cartDrive(pol2cart(coord), spin=0)
 
     def test(self):
@@ -60,10 +68,10 @@ class Mecanum:
     def cleanUp(self):
         GPIO.cleanup()
 
+
 # to be used in other files
 base = Mecanum()
 
 if __name__ == '__main__':
-    mec = Mecanum()
-    mec.test()
-    mec.cleanUp()
+    base.test()
+    base.cleanUp()

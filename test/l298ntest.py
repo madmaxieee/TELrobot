@@ -1,28 +1,26 @@
-import RPi.GPIO as gpio
+import RPi.GPIO as GPIO
 from time import sleep
-
-gpio.setmode(gpio.BCM)
 
 class Motor:
     def __init__(self, ena, in1, in2):
         self.ena = ena
         self.in1 = in1
         self.in2 = in2
-        gpio.setup(self.ena, gpio.OUT)
-        gpio.setup(self.in1, gpio.OUT)
-        gpio.setup(self.in2, gpio.OUT)
-        self.pwm = gpio.PWM(self.ena, 100)
+        GPIO.setup(self.ena, GPIO.OUT)
+        GPIO.setup(self.in1, GPIO.OUT)
+        GPIO.setup(self.in2, GPIO.OUT)
+        self.pwm = GPIO.PWM(self.ena, 100)
         self.pwm.start(0)
 
     def moveF(self, dutyCycle=50, sleepTime=0):
-        gpio.output(self.in1, gpio.LOW)
-        gpio.output(self.in2, gpio.HIGH)
+        GPIO.output(self.in1, GPIO.LOW)
+        GPIO.output(self.in2, GPIO.HIGH)
         self.pwm.ChangeDutyCycle(dutyCycle)
         sleep(sleepTime)
 
     def moveB(self, dutyCycle=50, sleepTime=0):
-        gpio.output(self.in1, gpio.HIGH)
-        gpio.output(self.in2, gpio.LOW)
+        GPIO.output(self.in1, GPIO.HIGH)
+        GPIO.output(self.in2, GPIO.LOW)
         self.pwm.ChangeDutyCycle(dutyCycle)
         sleep(sleepTime)
 
@@ -32,7 +30,7 @@ class Motor:
 
 
 def init():
-    gpio.setmode(gpio.BCM)
+    GPIO.setmode(GPIO.BCM)
 
 def test():
     motor1 = Motor(4, 3, 2)
