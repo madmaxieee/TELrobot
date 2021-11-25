@@ -1,4 +1,3 @@
-from numpy import spacing
 import pygame
 
 from Mecanum import base
@@ -10,13 +9,11 @@ commands = {
     pygame.K_d: lambda: base.cartDrive((0, 1)),
     pygame.K_q: lambda: base.cartDrive(spin=-1),
     pygame.K_e: lambda: base.cartDrive(spin=1),
-    'stop': lambda: base.stop(),
+    pygame.K_SPACE: lambda: base.stop(),
 }
 
 
 def handleController(pressed_keys):
-    base.clearDriveSpeeds()
-
     isPressing = False
     for key in commands.keys():
         if pressed_keys[key]:
@@ -24,4 +21,6 @@ def handleController(pressed_keys):
             isPressing = True
 
     if not isPressing:
-        commands['stop']()
+        base.stop()
+
+    base.clearDriveSpeeds()
