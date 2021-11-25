@@ -37,7 +37,7 @@ class Mecanum:
         delta_speeds = np.array([0, 0, 0, 0])
         x_hat = np.array([1, 1, 1, 1])
         y_hat = np.array([1, -1, -1, 1])
-        phi_hat = np.array([1, -1, 1, -1])
+        phi_hat = np.array([-1, 1, -1, 1])
         delta_speeds = velocity[0] * x_hat + velocity[1] * \
             y_hat + spin * phi_hat + spin * phi_hat
 
