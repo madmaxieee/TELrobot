@@ -12,10 +12,12 @@ def findMask(hsv_img):
 
     return red_mask
 
+kernel = np.ones((2,2),np.uint8)
 img = cv2.imread('./R.jpg')
 img = cv2.resize(img, (403, 302), interpolation=cv2.INTER_AREA)
 print(img.shape)
-hsv_img = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+blurred = cv2.pyrMeanShiftFiltering(img, 3, 3)
+hsv_img = cv2.cvtColor(blurred, cv2.COLOR_BGR2HSV)
 # red hsv range and mask on hsv_img
 red_mask = findMask(hsv_img)
 # print(red_mask.shape)
@@ -26,6 +28,7 @@ cv2.drawContours(contour_i, contour_contours, -1, (0, 0, 255), 2)
 
 avg_x = []
 avg_y = []
+print(len(contour_contours))
 for cnt in contour_contours:
   for c in cnt:
     avg_x.append(c[0][0])
