@@ -14,7 +14,7 @@ def pick_color(event,x,y,flags,param):
         image_mask = cv2.inRange(image,lower,upper)
         cv2.imshow("mask",image_mask)
 
-image = cv2.imread("./image1.jpg")
+image = cv2.imread("./B.jpg")
 image = cv2.resize(image, (756, 1008), interpolation=cv2.INTER_AREA)
 
 cv2.namedWindow('Image')
