@@ -29,10 +29,10 @@ class Mecanum:
 
     def cartDrive(self, velocity=(0, 0), spin=0):
         # rf, lf, rb, lb
-        delta_speeds = np.array([0, 0, 0, 0])
-        x_hat = np.array([1, 1, 1, 1])
-        y_hat = np.array([1, -1, -1, 1])
-        phi_hat = np.array([-1, 1, -1, 1])
+        delta_speeds = np.array([0, 0, 0, 0], dtype=float)
+        x_hat = np.array([1, 1, 1, 1], dtype=float)
+        y_hat = np.array([1, -1, -1, 1], dtype=float)
+        phi_hat = np.array([-1, 1, -1, 1], dtype=float)
         delta_speeds = velocity[0] * x_hat + velocity[1] * \
             y_hat + spin * phi_hat + spin * phi_hat
 
