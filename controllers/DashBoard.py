@@ -1,9 +1,13 @@
 import pygame
 from threading import Thread
+from time import perf_counter, sleep
+
+from tel_image.Vision import Vision
 
 from .Controller import handleController
+from config import params
 
-window_size = (640, 480)
+window_size = params["cam_size"]
 
 
 class DashBoard:
@@ -11,12 +15,16 @@ class DashBoard:
         pygame.init()
 
         self.window = pygame.display.set_mode(window_size)
+        self.vision = Vision()
+
         self.running = False
-        self.thread = Thread(target=self.handleInput)
+        self.input_thread = Thread(target=self.handleInput)
+        self.camera_thread = Thread(target=self.handleCamera)
 
     def start(self):
         self.running = True
-        self.thread.start()
+        self.input_thread.start()
+        self.camera_thread.start()
 
     def quit(self):
         self.running = False
@@ -30,3 +38,15 @@ class DashBoard:
                     self.quit()
 
             handleController(pressed_keys=pressed_keys)
+
+    def handleCamera(self):
+        ticks = 0
+        t0 = perf_counter()
+        while self.running:
+            # frame rate control
+            # while perf_counter()-t0 < ticks / 30:
+            #     pass
+            # ticks += 1
+            self.vision.readCam()
+            self.window = self.window.blit(self.vision.getSurface(), (0, 0))
+            pygame.display.flip()

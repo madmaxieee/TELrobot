@@ -9,6 +9,6 @@
     "arm": []
   },
   "parameters": {
-    "cam_size": [640, 320]
+    "cam_size": [640, 480]
   }
 }

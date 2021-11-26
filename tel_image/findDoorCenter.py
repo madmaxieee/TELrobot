@@ -1,4 +1,3 @@
-from typing import Tuple
 import cv2
 import numpy as np
 from config import params
@@ -26,7 +25,7 @@ def findMask(hsv_img, color):
     return mask
 
 # TODO return false if no door is found
-def findDoorCenter(bgr_img, color) -> Tuple(float, float):
+def findDoorCenter(bgr_img, color) -> tuple:
     kernel = np.ones((2, 2), np.uint8)
 
     x_size, y_size = params['cam_size']

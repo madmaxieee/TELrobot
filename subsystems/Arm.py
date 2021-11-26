@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-from gpiozero import Servo
-
-
-class Arm:
-    def __init__(self) -> None:
-        self.servos = [Servo()]
-        pass
-=======
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
@@ -63,4 +54,3 @@ def pcaScenario():
 if __name__ == '__main__':
     init()
     main()
->>>>>>> 4eec63aaf4b6093b692df3b4c4e8dec5b8c9c763

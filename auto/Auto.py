@@ -4,7 +4,7 @@ from subsystems import base
 from tel_image import findDoorCenter
 from config import params
 
-
+center_x, _ = params["cam_size"] / 2
 class Auto:
     def __init__(self) -> None:
         self.running = False
@@ -23,4 +23,4 @@ class Auto:
             pass
 
     def stage1(self):
-        center = np.array(params["cam_size"]) / 2
+        pass
