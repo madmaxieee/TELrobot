@@ -46,7 +46,7 @@ class Auto:
                         self.center_list.append(door_center[0])
                         break
             self.avg_center = sum(self.center_list) / len(self.center_list)
-        elif len(self.center_list) == 10 and not self.onTrack:
+        elif len(self.center_list) == 100 and not self.onTrack:
             self.center_list = []
             if self.avg_center < 300:
                 base.cartDrive((0, 1), spin=0.3)
