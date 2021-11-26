@@ -1,16 +1,11 @@
 from time import sleep
-
 from RPi import GPIO
-from Motor import Motor
 import numpy as np
 
-# (EN, in2/4, in1/3)
-motor_pins = {
-    "r_f": (25, 24, 23),
-    "l_f": (16, 20, 21),
-    "r_b": (11, 9, 10),
-    "l_b": (17, 27, 22),
-}
+from Motor import Motor
+from config import pins
+
+motor_pins = pins["motor"]
 
 
 def pol2cart(coord):
@@ -78,10 +73,6 @@ class Mecanum:
     def cleanUp(self):
         GPIO.cleanup()
 
-
-# to be used in other files
-base = Mecanum()
-
-if __name__ == '__main__':
-    base.test()
-    base.cleanUp()
+# if __name__ == '__main__':
+#     base.test()
+#     base.cleanUp()

@@ -1,4 +1,5 @@
-from subsystems.Mecanum import base
+from subsystems import base
+from tel_image.findDoorCenter import findDoorCenter
 class Stage:
     def __init__(self) -> None:
         self.isDone = False

@@ -1,5 +1,6 @@
 from threading import Thread
-from subsystems.Mecanum import base
+from subsystems import base
+from tel_image import findDoorCenter
 
 class Auto:
     def __init__(self) -> None:

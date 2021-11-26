@@ -1,6 +1,7 @@
 from typing import Tuple
 import cv2
 import numpy as np
+from config import params
 
 color_range = {
     'red0': [[0, 70, 0], [5, 255, 255]],
@@ -27,13 +28,14 @@ def findMask(hsv_img, color):
 
 def findDoorCenter(bgr_img, color) -> Tuple(float, float):
     kernel = np.ones((2, 2), np.uint8)
-    # TODO change size
-    bgr_img = cv2.resize(bgr_img, (403, 302), interpolation=cv2.INTER_AREA)
+
+    x_size, y_size = params['cam_size']
+    bgr_img = cv2.resize(bgr_img, (x_size/2, y_size/2),
+                         interpolation=cv2.INTER_AREA)
 
     blurred = cv2.pyrMeanShiftFiltering(bgr_img, 5, 5)
     hsv_img = cv2.cvtColor(blurred, cv2.COLOR_BGR2HSV)
 
-    # red hsv range and mask on hsv_img
     mask = findMask(hsv_img, color)
     dilation = cv2.dilate(mask, kernel, iterations=2)
 
