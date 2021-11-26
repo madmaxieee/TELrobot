@@ -1,5 +1,6 @@
 import sys
 from controllers.DashBoard import DashBoard
+from auto import Auto
 
 def main():
     if len(sys.argv) == 1:
@@ -7,7 +8,8 @@ def main():
         dash.start()
     elif len(sys.argv) > 1:
         if sys.argv[1] == 'auto':
-            print('auto')
+            with Auto() as a:
+                a.start()
 
 
 if __name__ == '__main__':
