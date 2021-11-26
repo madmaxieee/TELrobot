@@ -23,4 +23,5 @@ class Auto:
             pass
 
     def stage1(self):
+        
         pass

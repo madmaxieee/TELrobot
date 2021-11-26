@@ -2,7 +2,7 @@ import pygame
 from threading import Thread
 from time import perf_counter, sleep
 
-from tel_image.Vision import Vision
+from tel_image import vision 
 
 from .Controller import handleController
 from config import params
@@ -15,7 +15,6 @@ class DashBoard:
         pygame.init()
 
         self.window = pygame.display.set_mode(window_size)
-        self.vision = Vision()
 
         self.running = False
         self.input_thread = Thread(target=self.handleInput)
@@ -47,6 +46,6 @@ class DashBoard:
             # while perf_counter()-t0 < ticks / 30:
             #     pass
             # ticks += 1
-            self.vision.readCam()
-            self.window = self.window.blit(self.vision.getSurface(), (0, 0))
+            vision.readCam()
+            self.window = self.window.blit(vision.getSurface(), (0, 0))
             pygame.display.flip()
