@@ -41,6 +41,7 @@ class Auto:
                 while True:
                     door_center = findDoorCenter(
                         vision.readCam(), doors[self.door_ind])
+                    print(door_center)
                     if door_center[0] != -1:
                         self.center_list.append(door_center[0])
                         break
