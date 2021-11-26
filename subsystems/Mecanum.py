@@ -25,7 +25,7 @@ class Mecanum:
         self.motor_r_b = Motor(motor_pins["r_b"])
         self.motor_l_b = Motor(motor_pins["l_b"])
 
-        self.drive_speeds = np.array([0, 0, 0, 0])
+        self.drive_speeds = np.array([0, 0, 0, 0], dtype=float)
 
     def cartDrive(self, velocity=(0, 0), spin=0):
         # rf, lf, rb, lb
