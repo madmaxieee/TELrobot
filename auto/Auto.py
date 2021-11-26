@@ -49,9 +49,9 @@ class Auto:
         elif len(self.center_list) == 10 and not self.onTrack:
             self.center_list = []
             if self.avg_center < 300:
-                base.cartDrive((0, -1), spin=-1)
+                base.cartDrive((0, -1))
             elif self.avg_center > 340:
-                base.cartDrive((0, 1), spin=1)
+                base.cartDrive((0, 1), spin=0.2)
             else:
                 base.cartDrive((1, 0))
             sleep(0.2)
