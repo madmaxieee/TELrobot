@@ -28,8 +28,8 @@ class Auto:
         doors = ['red', 'green', 'blue']
         door_center = findDoorCenter(vision.readCam(), doors[0])
         if door_center[0] < 300:
-            base.cartDrive((0, 1), spin=1)
+            base.cartDrive((0, 1), spin=0.3)
         elif door_center[0] > 340:
-            base.cartDrive((0, -1), spin=-1)
+            base.cartDrive((0, -1), spin=-0.3)
         else:
             base.cartDrive((1, 0))
