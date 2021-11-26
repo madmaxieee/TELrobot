@@ -1,6 +1,6 @@
 import pygame
 
-from subsystems.Mecanum import base
+from subsystems import base
 
 commands = {
     pygame.K_w: lambda: base.cartDrive((1, 0)),

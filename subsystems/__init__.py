@@ -1,4 +1,4 @@
-from Mecanum import Mecanum
+from .Mecanum import Mecanum
 
 # to be used in other files
 base = Mecanum()

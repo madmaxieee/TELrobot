@@ -1,7 +1,7 @@
 import pygame
 from threading import Thread
 
-from Controller import handleController
+from .Controller import handleController
 
 window_size = (640, 480)
 

@@ -2,10 +2,10 @@ from time import sleep
 from RPi import GPIO
 import numpy as np
 
-from Motor import Motor
+from .Motor import Motor
 from config import pins
 
-motor_pins = pins["motor"]
+motor_pins = pins["base"]
 
 
 def pol2cart(coord):
