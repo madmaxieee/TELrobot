@@ -10,7 +10,7 @@ class Auto:
     def __init__(self) -> None:
         self.running = False
         self.thread = Thread(target=self.loop)
-        self.stages = [self.stage1, self.stage2, self.stage3]
+        # self.stages = [self.stage1, self.stage2, self.stage3]
 
     def start(self):
         self.running = True
