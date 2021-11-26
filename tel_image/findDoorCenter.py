@@ -25,7 +25,7 @@ def findMask(hsv_img, color):
 
     return mask
 
-
+# TODO return false if no door is found
 def findDoorCenter(bgr_img, color) -> Tuple(float, float):
     kernel = np.ones((2, 2), np.uint8)
 

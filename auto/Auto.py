@@ -1,6 +1,9 @@
 from threading import Thread
+import numpy as np
 from subsystems import base
 from tel_image import findDoorCenter
+from config import params
+
 
 class Auto:
     def __init__(self) -> None:
@@ -20,10 +23,4 @@ class Auto:
             pass
 
     def stage1(self):
-        pass
-
-    def stage2(self):
-        pass
-
-    def stage3(self):
-        pass
+        center = np.array(params["cam_size"]) / 2
