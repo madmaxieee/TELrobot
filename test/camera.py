@@ -1,15 +1,12 @@
-import pygame
-from pygame.locals import *
 import cv2 as cv
 import numpy
 
-color = True  # True#False
 camera_index = 0
 camera = cv.VideoCapture(camera_index)
 camera.set(3, 640)
 camera.set(4, 480)
 _, frame = camera.read()
-cv.imwrite('./photo1.jpg', frame)
+cv.imwrite('./photo2.jpg', frame)
 
 # def getCamFrame(camera):
 #     _, frame = camera.read()
