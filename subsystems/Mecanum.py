@@ -35,8 +35,7 @@ class Mecanum:
         phi_hat = np.array([-1, 1, -1, 1], dtype=float)
         delta_speeds = velocity[0] * x_hat + velocity[1] * \
             y_hat + spin * phi_hat + spin * phi_hat
-        print(
-            f'delta: {type(delta_speeds[0])}\ndrive: {type(self.drive_speeds[0])}')
+
         self.drive_speeds += delta_speeds
 
         self.updateMotors()
