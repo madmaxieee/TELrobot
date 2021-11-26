@@ -35,6 +35,7 @@ class Vision:
 
     def readCam(self) -> None:
         _, self.raw_img = camera.read()
+        return self.raw_img
 
     def getSurface(self):
         frame = cv.cvtColor(self.raw_img, cv.COLOR_BGR2RGB)
