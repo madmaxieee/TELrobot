@@ -31,6 +31,9 @@ class Auto:
             base.clearDriveSpeeds()
 
     def stage1(self):
+        if self.door_ind > 2:
+            base.cartDrive((1, 0))
+
         doors = ('red', 'green', 'blue')
         door_center = findDoorCenter(vision.readCam(), doors[self.door_ind])
         if len(self.center_list) == 0:
