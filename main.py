@@ -8,8 +8,8 @@ def main():
         dash.start()
     elif len(sys.argv) > 1:
         if sys.argv[1] == 'auto':
-            with Auto() as a:
-                a.start()
+            a = Auto()
+            a.start()
 
 
 if __name__ == '__main__':
