@@ -4,8 +4,7 @@ from subsystems import base
 from tel_image import findDoorCenter, vision
 from config import params
 
-center_x, _ = params["cam_size"] / 2
-
+center_x = params["cam_size"][0] / 2
 
 class Auto:
     def __init__(self) -> None:
