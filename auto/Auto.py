@@ -37,7 +37,7 @@ class Auto:
         doors = ('red', 'green', 'blue')
         door_center = findDoorCenter(vision.readCam(), doors[self.door_ind])
         if len(self.center_list) == 0:
-            for _ in range(10):
+            for _ in range(100):
                 while True:
                     door_center = findDoorCenter(
                         vision.readCam(), doors[self.door_ind])
@@ -53,7 +53,7 @@ class Auto:
                 base.cartDrive((0, -1), spin=-0.3)
             else:
                 base.cartDrive((1, 0))
-            sleep(1)
+            sleep(0.3 if self.door_ind == 0 else 0.5)
             self.onTrack = True
         elif self.onTrack:
             base.cartDrive((1, 0))
