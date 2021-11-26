@@ -59,7 +59,7 @@ class Mecanum:
         self.motor_l_b.move(self.drive_speeds[3])
 
     def clearDriveSpeeds(self):
-        self.drive_speeds = np.array([0, 0, 0, 0])
+        self.drive_speeds = np.array([0, 0, 0, 0], dtype=float)
 
     def test(self):
         self.polarDrive((1, 0))
