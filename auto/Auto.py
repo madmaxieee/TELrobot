@@ -27,7 +27,6 @@ class Auto:
     def stage1(self):
         doors = ['red', 'green', 'blue']
         door_center = findDoorCenter(vision.readCam(), doors[0])
-        print('stage1')
         if door_center[0] < 300:
             base.cartDrive((0, 1), spin=0.3)
         elif door_center[0] > 340:

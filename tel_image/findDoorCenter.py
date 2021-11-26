@@ -76,14 +76,14 @@ def findDoorCenter(bgr_img, color) -> tuple:
             avg_x.append(c[0][0])
             avg_y.append(c[0][1])
 
-    # cv2.circle(contour_i, (int(np.mean(avg_x)), int(
-    #     np.mean(avg_y))), 5, (255, 255, 0), -1)
-    # cv2.imshow("test_center", contour_i)
-    # cv2.imwrite("test_center.jpg", contour_i)
-    # while True:
-    #     if cv2.waitKey(1) & 0xFF == ord('q'):
-    #         break
-    # cv2.destroyAllWindows()
+    cv2.circle(contour_i, (int(np.mean(avg_x)), int(
+        np.mean(avg_y))), 5, (255, 255, 0), -1)
+    cv2.imshow("test_center", contour_i)
+    cv2.imwrite("test_center.jpg", contour_i)
+    while True:
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+    cv2.destroyAllWindows()
 
     return (np.mean(avg_x), np.mean(avg_y))
 
