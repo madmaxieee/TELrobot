@@ -40,7 +40,7 @@ class Vision:
     def streamVideo(self):
         t0 = time.time()
         while self.running:
-            while time.time() - t0 < self.ticks / 30:
+            while time.time() - t0 < self.ticks / 15:
                 pass
             _, frame = camera.read()
             frame = cv.resize(frame, (320, 240))
