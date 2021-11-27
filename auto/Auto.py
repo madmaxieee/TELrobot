@@ -31,10 +31,12 @@ class Auto:
             base.clearDriveSpeeds()
 
     def stage1(self):
+        if not self.running:
+            return
         if self.door_ind > 2:
             base.cartDrive((1, 0))
 
-        doors = ('red', 'green', 'blue')
+        doors = ('red', 'blue', 'green')
         door_center = findDoorCenter(vision.readCam(), doors[self.door_ind])
         if len(self.center_list) == 0:
             for _ in range(10):
@@ -62,5 +64,18 @@ class Auto:
             self.door_ind += 1
             self.onTrack = False
 
+<<<<<<< HEAD
 if __name__ == '__main__':
     base
+=======
+    def test(self):
+        while True:
+            t = int(input('input time: '))/10
+            base.cartDrive((0, 1))
+            sleep(t)
+            base.clearDriveSpeeds()
+
+            base.cartDrive((0, -1))
+            sleep(t)
+            base.clearDriveSpeeds()
+>>>>>>> a453272e3da5f26377dc2cc93a5c8fa4071edc26

@@ -1,5 +1,5 @@
 from threading import Thread
-import pygame
+# import pygame
 import cv2 as cv
 import numpy as np
 from pygame.locals import *
@@ -26,46 +26,30 @@ class Vision:
 
     def start(self) -> None:
         self.running = True
-        # self.thread.start()
+        self.video_thread.start()
 
     def quit(self) -> None:
         self.running = False
-
-    def loop(self) -> None:
-        while self.running:
-            pass
+        camera.release()
+        cv.destroyAllWindows()
 
     def readCam(self) -> None:
         _, self.raw_img = camera.read()
         return self.raw_img
 
-    def getSurface(self):
-        frame = cv.cvtColor(self.raw_img, cv.COLOR_BGR2RGB)
-        frame = np.rot90(frame)
-        frame = pygame.surfarray.make_surface(frame)
-        return frame
-
     def streamVideo(self):
+        t0 = time.time()
         while self.running:
-            t0 = time.perf_counter()
+            while time.time() - t0 < self.ticks / 30:
+                pass
             _, frame = camera.read()
             cv.imshow('camera', frame)
+            if cv.waitKey(1) & 0xFF == ord('q'):
+                break
+            self.ticks += 1
+        self.quit()
 
 
 if __name__ == '__main__':
-    pygame.init()
-    screen = pygame.display.set_mode((640, 480))
     vision = Vision()
-    running = True
-    while running:
-        screen.fill(0)  # set pygame screen to black
-        vision.readCam()
-        frame = vision.getSurface()
-        screen = screen.blit(frame, (0, 0))
-        print(f'{screen.__class__}')
-        pygame.display.flip()
-        for event in pygame.event.get():  # process events since last loop cycle
-            if event.type == KEYDOWN:
-                running = False
-    pygame.quit()
-    cv.destroyAllWindows()
+    vision.start()

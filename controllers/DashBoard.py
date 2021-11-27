@@ -18,16 +18,16 @@ class DashBoard:
 
         self.running = False
         self.input_thread = Thread(target=self.handleInput)
-        self.camera_thread = Thread(target=self.handleCamera)
 
     def start(self):
         self.running = True
         self.input_thread.start()
-        self.camera_thread.start()
+        vision.start()
 
     def quit(self):
         self.running = False
         pygame.quit()
+        vision.quit()
 
     def handleInput(self):
         while self.running:
@@ -37,15 +37,3 @@ class DashBoard:
                     self.quit()
 
             handleController(pressed_keys=pressed_keys)
-
-    def handleCamera(self):
-        ticks = 0
-        t0 = perf_counter()
-        while self.running:
-            # frame rate control
-            # while perf_counter()-t0 < ticks / 30:
-            #     pass
-            # ticks += 1
-            vision.readCam()
-            self.window = self.window.blit(vision.getSurface(), (0, 0))
-            pygame.display.flip()
