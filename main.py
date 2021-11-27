@@ -1,6 +1,6 @@
 import sys
 from controllers.DashBoard import DashBoard
-from auto import Auto
+# from auto import Auto
 from subsystems import base
 import cv2 as cv
 import numpy as np
