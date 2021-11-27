@@ -61,3 +61,14 @@ class Auto:
             sleep(5)
             self.door_ind += 1
             self.onTrack = False
+
+    def test(self):
+        while True:
+            t = int(input('input time: '))/10
+            base.cartDrive((0, 1))
+            sleep(t)
+            base.clearDriveSpeeds()
+
+            base.cartDrive((0, -1))
+            sleep(t)
+            base.clearDriveSpeeds()

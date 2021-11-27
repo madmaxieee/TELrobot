@@ -41,7 +41,7 @@ class Mecanum:
         self.updateMotors()
 
     def polarDrive(self, coord=(0, 0), spin=0):
-        self.cartDrive(pol2cart(coord), spin=0)
+        self.cartDrive(pol2cart(coord), spin=spin)
 
     def stop(self):
         self.cartDrive((0, 0))

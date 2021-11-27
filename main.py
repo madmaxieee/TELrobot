@@ -13,7 +13,12 @@ def main():
             a.start()
         elif sys.argv[1] == 'clean':
             base.clearDriveSpeeds()
+            base.updateMotors()
+            base.cleanUp()
             exit()
+        elif sys.argv[1] == 'test':
+            a = Auto()
+            a.test()
 
 if __name__ == '__main__':
     main()
