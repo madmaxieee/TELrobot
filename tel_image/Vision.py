@@ -43,6 +43,7 @@ class Vision:
             while time.time() - t0 < self.ticks / 30:
                 pass
             _, frame = camera.read()
+            frame = cv.resize(frame, (320, 240))
             cv.imshow('camera', frame)
             if cv.waitKey(1) & 0xFF == ord('q'):
                 break
