@@ -61,3 +61,6 @@ class Auto:
             sleep(5)
             self.door_ind += 1
             self.onTrack = False
+
+if __name__ == '__main__':
+    base

@@ -89,5 +89,5 @@ def findDoorCenter(bgr_img, color) -> tuple:
 
 
 if __name__ == '__main__':
-    frame = cv2.imread('./photo2.jpg')
-    findDoorCenter(frame, 'green')
+    frame = cv2.imread('../test/photo3.jpg')
+    findDoorCenter(frame, 'yellow')

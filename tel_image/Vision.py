@@ -3,6 +3,7 @@ import pygame
 import cv2 as cv
 import numpy as np
 from pygame.locals import *
+import time
 
 
 # from config import params
@@ -21,6 +22,7 @@ class Vision:
         # self.thread = Thread(target=self.loop)
         self.raw_img = None
         self.ticks = 0
+        self.video_thread = Thread(target=self.streamVideo)
 
     def start(self) -> None:
         self.running = True
@@ -42,6 +44,12 @@ class Vision:
         frame = np.rot90(frame)
         frame = pygame.surfarray.make_surface(frame)
         return frame
+
+    def streamVideo(self):
+        while self.running:
+            t0 = time.perf_counter()
+            _, frame = camera.read()
+            cv.imshow('camera', frame)
 
 
 if __name__ == '__main__':

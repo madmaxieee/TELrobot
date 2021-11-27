@@ -6,7 +6,7 @@ camera = cv.VideoCapture(camera_index)
 camera.set(3, 640)
 camera.set(4, 480)
 _, frame = camera.read()
-cv.imwrite('./photo4.jpg', frame)
+cv.imwrite('./photo5.jpg', frame)
 
 # def getCamFrame(camera):
 #     _, frame = camera.read()
